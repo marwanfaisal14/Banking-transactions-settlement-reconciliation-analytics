@@ -68,7 +68,7 @@ def validate_project(cache):
     if failures:
         raise ValueError('\n'.join(failures))
     print(f'Validated {len(files)} PBIP/PBIR documents against {len(schemas)} official Microsoft schemas.')
-    print('Desktop opening, refresh, visual rendering, DAX execution, and PBIX serialization remain unverified.')
+    print('This source validation does not execute Desktop, Power Query, or DAX and does not create or validate the separate PBIX binary.')
 
 
 if __name__ == '__main__':

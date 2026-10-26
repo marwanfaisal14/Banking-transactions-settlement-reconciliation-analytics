@@ -1,6 +1,6 @@
 # Power BI integration guide
 
-The working web dashboard is a dependency-free static report. A [PBIP source project](../powerbi/README.md) now provides a native Power BI report definition, six-table model, 21 DAX measures, and embedded CSV data. Its Desktop behavior and DAX execution are unverified and no PBIX binary is included. Open the project on Windows, refresh and validate it, then save a PBIX. The manual-import route below is an alternative and preserves the same financial definitions.
+The working web dashboard is a dependency-free static report. A [PBIP source project](../powerbi/README.md) now provides a native Power BI report definition, six-table model, 21 DAX measures, and embedded CSV data. An [owner-supplied Desktop-saved PBIX](../powerbi/BankingReconciliation.pbix) is also available; its archive structure passed checks and the owner reported successful opening. Desktop refresh/DAX evaluation and financial KPI values have not been independently verified here. Open either the PBIX or the source project on Windows and perform the acceptance checks. The manual-import route below is an alternative and preserves the same financial definitions.
 
 ## Import
 

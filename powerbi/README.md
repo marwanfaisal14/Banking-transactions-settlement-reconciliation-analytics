@@ -1,8 +1,14 @@
 # Power BI source project — open this first
 
-**This folder contains a PBIP source project, not a PBIX file.** The source defines a report, semantic model, embedded synthetic data, and DAX. It has not been opened, refreshed, rendered, or saved in Power BI Desktop in this Linux environment. JSON schema validation is not a substitute for those checks.
+**Download the report: [BankingReconciliation.pbix](https://raw.githubusercontent.com/marwanfaisal14/Banking-transactions-settlement-reconciliation-analytics/main/powerbi/BankingReconciliation.pbix).** This Desktop-saved file was supplied by the repository owner, who confirmed that the three pages and data opened without errors. Its archive CRC passed; the embedded DataModel is 250,216 bytes and the report contains three pages with 32 visual containers. [Validation evidence](https://github.com/marwanfaisal14/Banking-transactions-settlement-reconciliation-analytics/blob/main/docs/pbix-validation.json) records the exact uploaded file hash.
 
-## Download and open on Windows
+The PBIP source project and its ZIP remain available separately. The source ZIP does not include the PBIX binary. JSON schema/archive validation does not replace independent Desktop refresh, DAX evaluation, visual review, and KPI reconciliation; those checks have not been executed in this Linux environment.
+
+## Open the PBIX directly
+
+Download `BankingReconciliation.pbix` using GitHub’s download button and open it in a current Windows Power BI Desktop installation. Compare the selected-currency values with the acceptance table below. Keep the source ZIP only if you also want to edit the PBIP/PBIR project files.
+
+## Open or rebuild from the PBIP source on Windows
 
 1. Download [BankingReconciliation-PowerBI.zip](BankingReconciliation-PowerBI.zip) using GitHub's download button. **Extract the ZIP first.**
 2. Install or update [Power BI Desktop](https://powerbi.microsoft.com/desktop/) on Windows.
@@ -31,7 +37,7 @@ All four source CSVs are embedded as Base64 payloads in Power Query expressions.
 
 The snapshot is fixed at **26 October 2026**. It is not a live connection. To update it after a Python build, run `python scripts/build_powerbi.py` from the project root and reopen/refresh the project in Desktop.
 
-## Desktop acceptance checks before calling it a finished PBIX
+## Financial and visual acceptance checks
 
 | Currency | Due transactions | Matched | Ledger match rate | Expected due net | Ledger absolute variance | Bank absolute variance |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -45,6 +51,6 @@ Also verify the three incompatible ledger references (one per currency), valid s
 
 Linux checks validate project paths, visual field references, relationships, embedded CSV byte hashes/counts, archive contents, and PBIP/PBIR JSON against Microsoft's versioned published schemas. The financial Python/SQL engine is independently tested.
 
-**Not executed here:** Power Query evaluation, DAX execution, Desktop opening/refresh, native visual rendering, and actual PBIX creation. No PBIX exists in this package. The web dashboard screenshot elsewhere in the repository is not a screenshot of Power BI.
+**Not independently executed here:** Power Query evaluation, DAX execution, Desktop opening/refresh, native visual rendering, and financial KPI reconciliation. The PBIX was saved on the owner’s Windows machine and uploaded for publication; it was not serialized by the Linux scripts. The web dashboard screenshot elsewhere in the repository is not a screenshot of Power BI.
 
 Schema authority: [Microsoft JSON schemas](https://github.com/microsoft/json-schemas). The validator downloads the official raw GitHub mirror with TLS verification and retains the original schema IDs.

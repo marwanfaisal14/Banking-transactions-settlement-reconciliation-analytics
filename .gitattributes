@@ -3,3 +3,4 @@
 *.json text eol=lf
 *.png binary
 *.zip binary
+*.pbix binary

@@ -295,7 +295,7 @@ def build_project():
             visual_count += 1
     write_json(OUT / 'snapshot-manifest.json', {'synthetic': True, 'as_of': as_of, 'tables': snapshots,
                'pages': len(pages), 'visuals': visual_count, 'measures': len(measures()),
-               'validation_boundary': 'PBIP/PBIR JSON schemas and embedded sources can be checked in Linux. Desktop loading, DAX execution, rendering, and PBIX serialization require Windows and remain unverified.'})
+               'validation_boundary': 'This generator creates PBIP source only. JSON schemas and embedded sources can be checked in Linux; it does not execute Desktop, Power Query, or DAX, and does not create or package the separately supplied PBIX.'})
     zip_path = OUT / 'BankingReconciliation-PowerBI.zip'
     with zipfile.ZipFile(zip_path, 'w', compression=zipfile.ZIP_DEFLATED) as archive:
         for path in sorted(OUT.rglob('*')):
