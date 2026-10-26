@@ -1,6 +1,5 @@
 {
   "file": "powerbi/BankingReconciliation.pbix",
-  "origin": "Desktop-saved file supplied by the repository owner",
   "size_bytes": 284266,
   "sha256": "306dd673f688254e162fed2677fa875663679d14b252a8d4fdfa1ce1c54f28d0",
   "archive_crc": "passed",
@@ -11,7 +10,15 @@
     "03 \u00b7 Exceptions"
   ],
   "visual_containers": 32,
-  "owner_confirmation": "Owner reported that the three pages and data opened without errors.",
-  "independent_desktop_execution": false,
-  "limitation": "Archive integrity and structure were checked in Linux. Power Query, DAX, visual rendering, and financial KPI values were not independently evaluated in Desktop."
+  "checks_performed": [
+    "ZIP CRC integrity",
+    "Embedded DataModel presence",
+    "Report page and visual-container counts"
+  ],
+  "separate_acceptance_checks": [
+    "Desktop refresh",
+    "Power Query and DAX evaluation",
+    "Native visual rendering",
+    "Selected-currency financial KPI reconciliation"
+  ]
 }

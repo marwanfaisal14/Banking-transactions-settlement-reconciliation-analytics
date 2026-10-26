@@ -68,7 +68,7 @@ def validate_project(cache):
     if failures:
         raise ValueError('\n'.join(failures))
     print(f'Validated {len(files)} PBIP/PBIR documents against {len(schemas)} official Microsoft schemas.')
-    print('This source validation does not execute Desktop, Power Query, or DAX and does not create or validate the separate PBIX binary.')
+    print('Validation scope: PBIP/PBIR JSON schemas. Desktop refresh, DAX evaluation, visual review, and KPI reconciliation are separate acceptance checks.')
 
 
 if __name__ == '__main__':

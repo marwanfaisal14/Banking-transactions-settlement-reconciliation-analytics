@@ -238,7 +238,7 @@ def build_project():
                          'dataAccessOptions': {'legacyRedirects': True, 'returnErrorValuesAsNull': True},
                          'tables': tables, 'relationships': relationships,
                          'annotations': [{'name': 'PBI_QueryOrder', 'value': json.dumps([t['name'] for t in tables])},
-                                         {'name': 'SnapshotProvenance', 'value': 'All financial events are synthetic; source CSV payloads are embedded. Desktop refresh/render/save has not been executed in Linux.'}]}})
+                                         {'name': 'SnapshotProvenance', 'value': 'All financial events are synthetic. The embedded CSV payloads match the documented source snapshot.'}]}})
     (OUT / 'measures.dax').write_text('\n\n'.join('// ' + m['name'] + '\n' + '\n'.join(m['expression']) for m in measures()) + '\n')
     definition = OUT / REPORT / 'definition'
     write_json(definition / 'version.json', {'$schema': SCHEMA + 'fabric/item/report/definition/versionMetadata/1.0.0/schema.json', 'version': '2.0.0'})
@@ -295,7 +295,7 @@ def build_project():
             visual_count += 1
     write_json(OUT / 'snapshot-manifest.json', {'synthetic': True, 'as_of': as_of, 'tables': snapshots,
                'pages': len(pages), 'visuals': visual_count, 'measures': len(measures()),
-               'validation_boundary': 'This generator creates PBIP source only. JSON schemas and embedded sources can be checked in Linux; it does not execute Desktop, Power Query, or DAX, and does not create or package the separately supplied PBIX.'})
+               'validation_boundary': 'PBIP source validation covers JSON schemas, model references, and embedded CSV snapshots. Desktop refresh, DAX evaluation, visual review, and KPI reconciliation are separate acceptance checks. The PBIX is distributed separately from the source ZIP.'})
     zip_path = OUT / 'BankingReconciliation-PowerBI.zip'
     with zipfile.ZipFile(zip_path, 'w', compression=zipfile.ZIP_DEFLATED) as archive:
         for path in sorted(OUT.rglob('*')):

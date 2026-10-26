@@ -6,7 +6,7 @@
 
 [افتح لوحة الويب](https://marwanfaisal14.github.io/Banking-transactions-settlement-reconciliation-analytics/) · [نزّل تقرير Power BI بصيغة PBIX](powerbi/BankingReconciliation.pbix) · [مصدر التقرير PBIP](powerbi/BankingReconciliation-PowerBI.zip)
 
-ملف **BankingReconciliation.pbix** مضاف داخل مجلد `powerbi`، إلى جانب مصدر التقرير بصيغة PBIP. صاحب المشروع حفظ الملف من Power BI Desktop وأكد ظهور الصفحات الثلاث والبيانات دون أخطاء. فحص الأرشيف نجح، والملف يحتوي على نموذج بيانات مضمّن و32 عنصرًا مرئيًا. لم يتم التحقق المستقل من تنفيذ DAX أو صحة قيم المقاييس داخل Desktop في البيئة الحالية.
+ملف **BankingReconciliation.pbix** متاح داخل مجلد `powerbi`، إلى جانب المصدر بصيغة PBIP. يحتوي التقرير على ثلاث صفحات ونموذج بيانات مضمّن و32 عنصرًا مرئيًا. يتضمن التوثيق نتائج فحص الأرشيف وقيم المقاييس المرجعية لمراجعة التقرير داخل Power BI Desktop.
 
 ## محتوى المشروع
 

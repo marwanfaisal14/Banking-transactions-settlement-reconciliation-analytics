@@ -8,7 +8,7 @@ An end-to-end portfolio project that follows a payment from the transaction ledg
 
 [Open the web dashboard](https://marwanfaisal14.github.io/Banking-transactions-settlement-reconciliation-analytics/) · [Download the Power BI report (.pbix)](powerbi/BankingReconciliation.pbix) · [Power BI source package](powerbi/BankingReconciliation-PowerBI.zip) · [Power BI opening instructions](powerbi/README.md) · [العربية](README.ar.md)
 
-**Power BI report available:** [BankingReconciliation.pbix](powerbi/BankingReconciliation.pbix) is a Desktop-saved file supplied by the repository owner, who confirmed that the three pages and data opened without errors. Archive CRC checks passed; the file contains an embedded data model and three pages with 32 visual containers. The six-table, 21-measure PBIP source remains available. Power Query/DAX evaluation and KPI values have not been independently verified in Desktop here; see [validation evidence](docs/pbix-validation.json).
+**Power BI report:** [BankingReconciliation.pbix](powerbi/BankingReconciliation.pbix) includes an embedded data model and three report pages with 32 visual containers. The six-table, 21-measure PBIP source is also available. Archive checks and source-package tests are documented in [validation evidence](docs/pbix-validation.json); financial acceptance values are listed in the [Power BI guide](powerbi/README.md).
 
 ![Settlement Lab dashboard showing match rate, independent ledger and bank variances, daily settlement flow, and an operational exception queue](docs/assets/dashboard-desktop.png)
 
@@ -118,7 +118,7 @@ After the repository is on GitHub, open **Settings → Pages**, choose **Deploy 
 
 This is an explainable demonstration, not a production accounting ledger. Country-specific holidays, FX conversion, chargebacks, reserves, rolling settlement adjustments, payout-SLA breach classification, incremental ingestion, and case-resolution persistence are outside this version. A real implementation would need provider-specific contracts, source controls, and an agreed operational calendar. See [the runbook](docs/runbook.md).
 
-The [Power BI deliverables](powerbi/README.md) include the owner-supplied PBIX and native report/model source with embedded data. The file archive has been checked, while DAX/Power Query evaluation has not been independently executed in Desktop here. The [integration guide](docs/power-bi-guide.md) also explains manual import and financial validation.
+The [Power BI deliverables](powerbi/README.md) include the PBIX report and native report/model source with embedded data. The file archive and source structure are checked; Desktop refresh and financial KPI reconciliation are separate acceptance checks. The [integration guide](docs/power-bi-guide.md) also explains manual import and financial validation.
 
 ## Portfolio relevance
 

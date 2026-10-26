@@ -48,7 +48,7 @@ The report JSON's adjacent directory also receives the three reconciliation CSVs
 
 `.github/workflows/ci.yml` configures Python engine/SQL validation on 3.11 and 3.12 and a separate Playwright browser job. It also regenerates the default data and verifies that committed input/snapshot/findings files reproduce. The configured workflow does not prove a remote CI run has completed; inspect the repository's Actions results after publication.
 
-GitHub Pages can serve `main:/docs` after the repository owner enables it in Settings. The current server used for local checks is not a public deployment. Stop and restart the documented static server as needed; no long-running financial service is retained.
+GitHub Pages serves the static dashboard from `main:/docs` when enabled in repository settings. The Python HTTP server is an alternative for local review; no financial service or backend is required.
 
 ## Production extensions outside this version
 

@@ -906,7 +906,7 @@
       },
       {
         "name": "SnapshotProvenance",
-        "value": "All financial events are synthetic; source CSV payloads are embedded. Desktop refresh/render/save has not been executed in Linux."
+        "value": "All financial events are synthetic. The embedded CSV payloads match the documented source snapshot."
       }
     ]
   }

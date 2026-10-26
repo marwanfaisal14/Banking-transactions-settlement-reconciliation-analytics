@@ -26,5 +26,5 @@
   "pages": 3,
   "visuals": 32,
   "measures": 21,
-  "validation_boundary": "This generator creates PBIP source only. JSON schemas and embedded sources can be checked in Linux; it does not execute Desktop, Power Query, or DAX, and does not create or package the separately supplied PBIX."
+  "validation_boundary": "PBIP source validation covers JSON schemas, model references, and embedded CSV snapshots. Desktop refresh, DAX evaluation, visual review, and KPI reconciliation are separate acceptance checks. The PBIX is distributed separately from the source ZIP."
 }

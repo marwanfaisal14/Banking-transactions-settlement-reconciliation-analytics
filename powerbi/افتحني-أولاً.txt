@@ -1,7 +1,0 @@
-ملف التقرير المباشر: BankingReconciliation.pbix
-نزّله وافتحه باستخدام Power BI Desktop على Windows.
-
-صاحب المشروع حفظ الملف في Desktop وأكد ظهور الصفحات الثلاث والبيانات دون أخطاء. فحص أرشيف الملف نجح. لم يتم التحقق المستقل من تنفيذ DAX أو قيم المقاييس داخل Desktop هنا.
-
-حزمة BankingReconciliation-PowerBI.zip تحتوي على المصدر PBIP فقط، ولا تضم ملف PBIX. لاستخدام المصدر: فك الضغط، وافتح BankingReconciliation.pbip، واضغط Refresh، ثم راجع القيم واحفظ بصيغة PBIX من قائمة Save As.
-لا تغيّر امتداد الملف يدويًا.

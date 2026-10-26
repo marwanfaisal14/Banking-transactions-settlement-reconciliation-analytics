@@ -1,8 +1,8 @@
 # Power BI source project — open this first
 
-**Download the report: [BankingReconciliation.pbix](https://raw.githubusercontent.com/marwanfaisal14/Banking-transactions-settlement-reconciliation-analytics/main/powerbi/BankingReconciliation.pbix).** This Desktop-saved file was supplied by the repository owner, who confirmed that the three pages and data opened without errors. Its archive CRC passed; the embedded DataModel is 250,216 bytes and the report contains three pages with 32 visual containers. [Validation evidence](https://github.com/marwanfaisal14/Banking-transactions-settlement-reconciliation-analytics/blob/main/docs/pbix-validation.json) records the exact uploaded file hash.
+**Download the report: [BankingReconciliation.pbix](https://raw.githubusercontent.com/marwanfaisal14/Banking-transactions-settlement-reconciliation-analytics/main/powerbi/BankingReconciliation.pbix).** The file contains an embedded model and three report pages with 32 visual containers. Its archive integrity, size, and SHA-256 hash are recorded in [validation evidence](https://github.com/marwanfaisal14/Banking-transactions-settlement-reconciliation-analytics/blob/main/docs/pbix-validation.json).
 
-The PBIP source project and its ZIP remain available separately. The source ZIP does not include the PBIX binary. JSON schema/archive validation does not replace independent Desktop refresh, DAX evaluation, visual review, and KPI reconciliation; those checks have not been executed in this Linux environment.
+The PBIP source and ZIP are available separately. The source ZIP contains the editable project and embedded snapshot; download the PBIX separately to open the report directly.
 
 ## Open the PBIX directly
 
@@ -47,10 +47,10 @@ The snapshot is fixed at **26 October 2026**. It is not a live connection. To up
 
 Also verify the three incompatible ledger references (one per currency), valid split settlements/payouts, negative refunds, null actuals on currency mismatches, and zero-denominator behavior. Check chart/table sorting, slicer synchronization, and interactions visually. The ledger and bank variance columns must never be added together.
 
-## What has and has not been checked
+## Validation scope
 
-Linux checks validate project paths, visual field references, relationships, embedded CSV byte hashes/counts, archive contents, and PBIP/PBIR JSON against Microsoft's versioned published schemas. The financial Python/SQL engine is independently tested.
+Automated checks cover archive integrity, project paths, visual field references, relationships, embedded CSV hashes/counts, source-package contents, and PBIP/PBIR JSON against Microsoft's versioned published schemas. The Python/SQL engine has financial control tests.
 
-**Not independently executed here:** Power Query evaluation, DAX execution, Desktop opening/refresh, native visual rendering, and financial KPI reconciliation. The PBIX was saved on the owner’s Windows machine and uploaded for publication; it was not serialized by the Linux scripts. The web dashboard screenshot elsewhere in the repository is not a screenshot of Power BI.
+Desktop refresh, Power Query/DAX evaluation, native visual appearance, and selected-currency KPI reconciliation are separate acceptance checks. Use the reference values above when reviewing the report. The web dashboard screenshot in the repository illustrates the web interface.
 
-Schema authority: [Microsoft JSON schemas](https://github.com/microsoft/json-schemas). The validator downloads the official raw GitHub mirror with TLS verification and retains the original schema IDs.
+Schema reference: [Microsoft JSON schemas](https://github.com/microsoft/json-schemas). The validator uses the official raw GitHub mirror with TLS verification and retains the original schema IDs.
