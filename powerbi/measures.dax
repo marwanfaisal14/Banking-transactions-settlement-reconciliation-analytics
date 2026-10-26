@@ -1,0 +1,75 @@
+// Ledger Records
+COALESCE(COUNTROWS('Ledger'), 0)
+
+// Eligible Due Transactions
+VAR Cutoff = MAX('RunMetadata'[as_of])
+RETURN COALESCE(COUNTROWS(FILTER('Ledger', 'Ledger'[eligible] = TRUE() && 'Ledger'[due_date] <= Cutoff)), 0)
+
+// Matched Due Transactions
+VAR Cutoff = MAX('RunMetadata'[as_of])
+RETURN COALESCE(COUNTROWS(FILTER('Ledger', 'Ledger'[eligible] = TRUE() && 'Ledger'[due_date] <= Cutoff && 'Ledger'[matched] = TRUE())), 0)
+
+// Open Due Transactions
+[Eligible Due Transactions] - [Matched Due Transactions]
+
+// Ledger Match Rate
+DIVIDE([Matched Due Transactions], [Eligible Due Transactions])
+
+// Expected Due Net
+VAR Cutoff = MAX('RunMetadata'[as_of])
+RETURN IF(HASONEVALUE('Currency'[currency]), DIVIDE(SUMX(FILTER('Ledger', 'Ledger'[eligible] = TRUE() && 'Ledger'[due_date] <= Cutoff), 'Ledger'[expected_net_minor]), 100))
+
+// Ledger Absolute Variance
+VAR Cutoff = MAX('RunMetadata'[as_of])
+RETURN IF(HASONEVALUE('Currency'[currency]), DIVIDE(SUMX(FILTER('Ledger', 'Ledger'[eligible] = TRUE() && 'Ledger'[due_date] <= Cutoff && NOT(ISBLANK('Ledger'[net_delta_minor]))), ABS('Ledger'[net_delta_minor])), 100))
+
+// Incompatible Ledger References
+VAR Cutoff = MAX('RunMetadata'[as_of])
+RETURN COALESCE(COUNTROWS(FILTER('Ledger', 'Ledger'[eligible] = TRUE() && 'Ledger'[due_date] <= Cutoff && ISBLANK('Ledger'[net_delta_minor]))), 0)
+
+// Incompatible Expected Net
+VAR Cutoff = MAX('RunMetadata'[as_of])
+RETURN IF(HASONEVALUE('Currency'[currency]), DIVIDE(SUMX(FILTER('Ledger', 'Ledger'[eligible] = TRUE() && 'Ledger'[due_date] <= Cutoff && ISBLANK('Ledger'[net_delta_minor])), 'Ledger'[expected_net_minor]), 100))
+
+// Expected Fees Due
+VAR Cutoff = MAX('RunMetadata'[as_of])
+RETURN IF(HASONEVALUE('Currency'[currency]), DIVIDE(SUMX(FILTER('Ledger', 'Ledger'[eligible] = TRUE() && 'Ledger'[due_date] <= Cutoff), 'Ledger'[expected_fee_minor]), 100))
+
+// Bank Batch Records
+COALESCE(COUNTROWS('BankBatches'), 0)
+
+// Due Bank Batches
+VAR Cutoff = MAX('RunMetadata'[as_of])
+RETURN COALESCE(COUNTROWS(FILTER('BankBatches', 'BankBatches'[due_date] <= Cutoff)), 0)
+
+// Matched Due Bank Batches
+VAR Cutoff = MAX('RunMetadata'[as_of])
+RETURN COALESCE(COUNTROWS(FILTER('BankBatches', 'BankBatches'[due_date] <= Cutoff && 'BankBatches'[matched] = TRUE())), 0)
+
+// Bank Match Rate
+DIVIDE([Matched Due Bank Batches], [Due Bank Batches])
+
+// Expected Due Bank Net
+VAR Cutoff = MAX('RunMetadata'[as_of])
+RETURN IF(HASONEVALUE('Currency'[currency]), DIVIDE(SUMX(FILTER('BankBatches', 'BankBatches'[due_date] <= Cutoff), 'BankBatches'[expected_net_minor]), 100))
+
+// Actual Due Bank Net
+VAR Cutoff = MAX('RunMetadata'[as_of])
+RETURN IF(HASONEVALUE('Currency'[currency]), DIVIDE(SUMX(FILTER('BankBatches', 'BankBatches'[due_date] <= Cutoff), 'BankBatches'[actual_net_minor]), 100))
+
+// Bank Absolute Variance
+VAR Cutoff = MAX('RunMetadata'[as_of])
+RETURN IF(HASONEVALUE('Currency'[currency]), DIVIDE(SUMX(FILTER('BankBatches', 'BankBatches'[due_date] <= Cutoff && NOT(ISBLANK('BankBatches'[net_delta_minor]))), ABS('BankBatches'[net_delta_minor])), 100))
+
+// Exception Records
+COALESCE(COUNTROWS('Exceptions'), 0)
+
+// High Priority Records
+COALESCE(COUNTROWS(FILTER('Exceptions', 'Exceptions'[severity] = "HIGH")), 0)
+
+// Aged High Priority Records
+VAR Grace = MAX('RunMetadata'[grace_business_days])
+RETURN COALESCE(COUNTROWS(FILTER('Exceptions', 'Exceptions'[severity] = "HIGH" && 'Exceptions'[age_business_days] > Grace)), 0)
+
+// Late Settlement Events
+COALESCE(COUNTROWS(FILTER('Exceptions', 'Exceptions'[code] = "LATE_SETTLEMENT")), 0)

@@ -1,0 +1,30 @@
+{
+  "synthetic": true,
+  "as_of": "2026-10-26",
+  "tables": {
+    "Ledger": {
+      "source": "docs/data/transaction_reconciliation.csv",
+      "sha256": "17d6b3a632c816c320027ad67f42ee17f6ebae8d1bc8a0e1b058b0653d3a091e",
+      "rows": 1200
+    },
+    "BankBatches": {
+      "source": "docs/data/batch_reconciliation.csv",
+      "sha256": "4581cb01c806006ec5bf18301a9857f5d3063b7b17d951bc1812654a8a584055",
+      "rows": 72
+    },
+    "Exceptions": {
+      "source": "docs/data/exceptions.csv",
+      "sha256": "c055741a90a7ba92cd8ad9fc301b5e174c8a9c55a4fa8f31c6a6cd2495cf4d83",
+      "rows": 35
+    },
+    "RunMetadata": {
+      "source": "docs/data/run_metadata.csv",
+      "sha256": "5fd3eaf9de7c649a66545be91454a06edcafaf4a61e1b1e09db448c56590e5db",
+      "rows": 1
+    }
+  },
+  "pages": 3,
+  "visuals": 32,
+  "measures": 21,
+  "validation_boundary": "PBIP/PBIR JSON schemas and embedded sources can be checked in Linux. Desktop loading, DAX execution, rendering, and PBIX serialization require Windows and remain unverified."
+}

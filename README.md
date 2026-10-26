@@ -6,6 +6,10 @@ An end-to-end portfolio project that follows a payment from the transaction ledg
 
 **All records are synthetic.** No bank integration, real customer data, recovered funds, or production deployment is claimed.
 
+[Open the web dashboard](https://marwanfaisal14.github.io/Banking-transactions-settlement-reconciliation-analytics/) · [Download the Power BI source package](powerbi/BankingReconciliation-PowerBI.zip) · [Power BI opening instructions](powerbi/README.md) · [العربية](README.ar.md)
+
+**Power BI file status:** a self-contained `.pbip` source project now defines three pages, 32 native visual containers, an embedded synthetic snapshot, six tables, and 21 DAX measures. Its source structure and schemas are checked; Power BI Desktop loading/refresh/rendering and DAX execution are unverified. **No `.pbix` has been created.** Open and validate the source on Windows, then use Save As → Power BI file (*.pbix). Do not rename the extension.
+
 ![Settlement Lab dashboard showing match rate, independent ledger and bank variances, daily settlement flow, and an operational exception queue](docs/assets/dashboard-desktop.png)
 
 ## Business problem
@@ -28,7 +32,7 @@ This project answers four questions:
 | SQL analysis | 12 executable analyses covering match rates, fees, aging, bank gaps, exception ownership, and financial conservation |
 | Dashboard | Currency isolation, due-date chart, prioritized queue, transaction/batch views, search, filters, pagination, review dialogs, CSV export, and mobile layout |
 | Audit artifacts | Source SHA-256 hashes, input counts, excluded future rows, CSV exports, local SQLite database, and a reproducible JSON snapshot |
-| Validation | 28 Python tests and functional Chromium checks; CI configuration for both |
+| Validation | 28 engine/pipeline tests, five Power BI source-package checks, official PBIP/PBIR schema validation, and functional Chromium checks |
 
 ## Verified demonstration results
 
@@ -114,7 +118,7 @@ After the repository is on GitHub, open **Settings → Pages**, choose **Deploy 
 
 This is an explainable demonstration, not a production accounting ledger. Country-specific holidays, FX conversion, chargebacks, reserves, rolling settlement adjustments, payout-SLA breach classification, incremental ingestion, and case-resolution persistence are outside this version. A real implementation would need provider-specific contracts, source controls, and an agreed operational calendar. See [the runbook](docs/runbook.md).
 
-The Power BI guide explains how to import the exports and preserve the control definitions; no PBIX file or tested DAX model is claimed.
+The [Power BI project](powerbi/README.md) includes native report/model source and embedded data. It is not a PBIX binary, and its DAX/Power Query expressions have not been executed in Desktop here. The [integration guide](docs/power-bi-guide.md) also explains manual import and financial validation.
 
 ## Portfolio relevance
 

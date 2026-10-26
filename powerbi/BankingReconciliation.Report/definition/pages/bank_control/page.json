@@ -1,0 +1,96 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "bank_control",
+  "displayName": "02 · Settlement & Bank",
+  "displayOption": "FitToPage",
+  "width": 1440,
+  "height": 900,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#F4F7FA'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "bank_daily",
+      "target": "bank_card_0",
+      "type": "NoFilter"
+    },
+    {
+      "source": "bank_daily",
+      "target": "bank_card_1",
+      "type": "NoFilter"
+    },
+    {
+      "source": "bank_daily",
+      "target": "bank_card_2",
+      "type": "NoFilter"
+    },
+    {
+      "source": "bank_daily",
+      "target": "bank_card_3",
+      "type": "NoFilter"
+    },
+    {
+      "source": "bank_status",
+      "target": "bank_card_0",
+      "type": "NoFilter"
+    },
+    {
+      "source": "bank_status",
+      "target": "bank_card_1",
+      "type": "NoFilter"
+    },
+    {
+      "source": "bank_status",
+      "target": "bank_card_2",
+      "type": "NoFilter"
+    },
+    {
+      "source": "bank_status",
+      "target": "bank_card_3",
+      "type": "NoFilter"
+    },
+    {
+      "source": "bank_detail",
+      "target": "bank_card_0",
+      "type": "NoFilter"
+    },
+    {
+      "source": "bank_detail",
+      "target": "bank_card_1",
+      "type": "NoFilter"
+    },
+    {
+      "source": "bank_detail",
+      "target": "bank_card_2",
+      "type": "NoFilter"
+    },
+    {
+      "source": "bank_detail",
+      "target": "bank_card_3",
+      "type": "NoFilter"
+    }
+  ]
+}

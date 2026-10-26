@@ -1,0 +1,2 @@
+# Optional: validate generated PBIP/PBIR JSON against Microsoft's published schemas.
+jsonschema==4.26.0

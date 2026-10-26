@@ -1,6 +1,6 @@
 # Power BI integration guide
 
-The working dashboard in this repository is a dependency-free static web report. A PBIX and validated DAX model are not included. This guide explains how to reuse the tested reconciliation facts in Power BI Desktop without changing their financial meaning.
+The working web dashboard is a dependency-free static report. A [PBIP source project](../powerbi/README.md) now provides a native Power BI report definition, six-table model, 21 DAX measures, and embedded CSV data. Its Desktop behavior and DAX execution are unverified and no PBIX binary is included. Open the project on Windows, refresh and validate it, then save a PBIX. The manual-import route below is an alternative and preserves the same financial definitions.
 
 ## Import
 
