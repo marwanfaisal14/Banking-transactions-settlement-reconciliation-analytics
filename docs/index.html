@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A synthetic banking payments and settlement reconciliation case study: ledger matching, bank payouts, and an operational exception queue.">
+  <title>Settlement Lab · Banking Reconciliation Analytics</title>
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to dashboard</a>
+  <aside class="sidebar">
+    <a class="brand" href="#overview"><img src="assets/mark.svg" width="38" height="38" alt=""><span>Settlement Lab<small>PAYMENTS INTELLIGENCE</small></span></a>
+    <p class="nav-caption">WORKSPACE</p>
+    <nav aria-label="Main navigation">
+      <a class="nav-active" href="#overview"><span aria-hidden="true">◫</span> Reconciliation overview</a>
+      <a href="#workbench"><span aria-hidden="true">≡</span> Operations workbench</a>
+      <button class="nav-button" id="guide"><span aria-hidden="true">ⓘ</span> How the controls work</button>
+    </nav>
+    <div class="sidebar-note"><span class="live-dot"></span> Reproducible snapshot<p>Fictional payments.<br>Real reconciliation questions.</p></div>
+    <a class="source-link" href="https://github.com/marwanfaisal14/banking-transactions-settlement-reconciliation-analytics">Project & methodology <span aria-hidden="true">→</span></a>
+  </aside>
+  <main id="main">
+    <header class="topbar"><span>PORTFOLIO / BANKING & PAYMENTS</span><span class="demo-tag">SYNTHETIC DATA</span></header>
+    <section class="heading" id="overview">
+      <div><p class="eyebrow">SETTLEMENT CONTROL CENTER</p><h1>Every payment. <br>Accounted for.</h1><p class="subtitle">Trace transactions from the ledger to the processor and through to the bank.</p></div>
+      <div class="snapshot"><label for="currency">Reporting currency</label><select id="currency"><option>USD</option><option>AED</option><option>EGP</option></select><p>As of <strong id="as-of">—</strong> · UTC dates</p></div>
+    </section>
+    <div id="loading" class="loading" role="status">Loading the reconciliation snapshot…</div>
+    <div id="load-error" class="error" role="alert" hidden><strong>The snapshot could not be loaded.</strong><p>Serve the docs folder over HTTP, then refresh. The project README includes startup instructions.</p><button id="retry">Try again</button></div>
+    <div id="dashboard" hidden>
+      <div class="control-banner"><span class="control-icon" aria-hidden="true">✓</span><p><strong>Two controls. One clear view.</strong> Ledger differences and bank payout differences are tracked separately. Currencies are never combined.</p><span id="attention-count" class="attention"></span></div>
+      <section class="metrics" aria-label="Key reconciliation metrics">
+        <article class="metric feature"><p>Ledger match rate</p><h2 id="match-rate">—</h2><span id="match-detail"></span><div class="progress-track"><div id="match-progress"></div></div></article>
+        <article class="metric"><p>Expected due net</p><h2 id="expected-net">—</h2><span>Captured payments less fees and refunds</span></article>
+        <article class="metric"><p>Ledger absolute variance</p><h2 id="ledger-variance">—</h2><span>Due, comparable items · includes pending</span></article>
+        <article class="metric"><p>Bank absolute variance</p><h2 id="bank-variance">—</h2><span id="bank-detail"></span></article>
+      </section>
+      <p class="metric-note" id="incompatible-note"></p>
+      <section class="charts">
+        <article class="panel trend-panel"><div class="panel-heading"><div><p class="eyebrow">SETTLEMENT FLOW</p><h2>Due transactions by day</h2></div><div class="legend"><span><i class="matched-dot"></i>Matched</span><span><i class="open-dot"></i>Open</span></div></div><p class="panel-subtitle">Count of eligible transactions · weekdays calendar</p><div id="daily-chart" class="daily-chart" role="img"></div><div class="chart-axis"><span id="chart-first"></span><span>Settlement due date</span><span id="chart-last"></span></div></article>
+        <article class="panel controls-panel"><div class="panel-heading"><div><p class="eyebrow">CONTROL BREAKDOWN</p><h2>Where things stand</h2></div><span class="small-pill">Selected currency</span></div><div id="breakdown"></div><div class="bank-health"><span>Bank payout batches matched</span><strong id="bank-health"></strong></div></article>
+      </section>
+      <section class="panel workbench" id="workbench">
+        <div class="panel-heading workbench-title"><div><p class="eyebrow">RECONCILIATION WORKBENCH</p><h2>Find the difference. Take the next step.</h2></div><button class="export-button" id="export"><span aria-hidden="true">↓</span> Export CSV</button></div>
+        <p class="panel-subtitle">Filter the records below. Summary metrics reflect the selected currency and reporting cutoff.</p>
+        <div class="tabs" role="tablist" aria-label="Reconciliation records"><button id="tab-exceptions" role="tab" aria-selected="true" aria-controls="records-panel" data-tab="exceptions">Exception queue <span id="count-exceptions"></span></button><button id="tab-transactions" role="tab" aria-selected="false" tabindex="-1" aria-controls="records-panel" data-tab="transactions">Transactions <span id="count-transactions"></span></button><button id="tab-batches" role="tab" aria-selected="false" tabindex="-1" aria-controls="records-panel" data-tab="batches">Bank batches <span id="count-batches"></span></button></div>
+        <div class="filters"><label class="search-label" for="search">Search reference<input id="search" type="search" placeholder="Transaction, batch, or exception reference…" autocomplete="off"></label><label for="status-filter">Status / issue<select id="status-filter"><option value="">All statuses</option></select></label></div>
+        <div id="records-panel" role="tabpanel" aria-labelledby="tab-exceptions"><p id="table-note" class="panel-subtitle"></p><p class="table-hint">Swipe the table to see all fields and review a record →</p><div class="table-scroll"><table id="records"><caption class="sr-only">Reconciliation records for the selected currency and filters</caption><thead id="table-head"></thead><tbody id="table-body"></tbody></table></div><p class="empty-state" id="empty-state" hidden>No records match these filters. Try another reference or status.</p></div>
+        <div class="pagination"><span id="page-summary" aria-live="polite"></span><div><button id="previous" aria-label="Previous page">← Previous</button><span id="page-number"></span><button id="next" aria-label="Next page">Next →</button></div></div>
+      </section>
+      <footer><span>Fictional dataset · Exact minor-unit calculations · No cross-currency netting</span><span>Built by <a href="https://github.com/marwanfaisal14">marwanfaisal14</a></span></footer>
+    </div>
+  </main>
+  <dialog id="detail-dialog"><div class="dialog-header"><p class="eyebrow" id="dialog-label">RECORD DETAIL</p><button id="close-dialog" aria-label="Close details">×</button></div><h2 id="dialog-title"></h2><div id="dialog-content"></div></dialog>
+</body>
+</html>

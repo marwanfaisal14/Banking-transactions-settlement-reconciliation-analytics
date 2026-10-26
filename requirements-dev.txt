@@ -1,0 +1,2 @@
+# Optional only: browser acceptance checks. The reconciliation engine has no external dependencies.
+playwright==1.62.0
